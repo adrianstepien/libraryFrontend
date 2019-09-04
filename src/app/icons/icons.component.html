@@ -1,0 +1,26 @@
+<div class="main-content" >
+    <section class="row-section">
+        <div class="container">
+            <br>
+            <div class="col-md-12 offset-md-1 row-block">
+                <ul id="sortable">
+                    <li>
+                        <div *ngFor="let book of booksInRegister" class="media">
+                            <div class="media-left align-self-center">
+                                <img class="rounded-circle" src="{{ book.imageLink}}">
+                            </div>
+                            <div class="media-body">
+                                <h4>{{ book.title}}</h4>
+                                <p>Własny opis: {{ book.ownReview}}</p>
+                            </div>
+                            <div class="media-right align-self-center">
+                                <button class="btn btn-default" (click)="onDetailsButtonClick(book)" routerLink= "/book" >Szczegóły</button>
+                                <!--<app-book [bookToEdit]="book"></app-book>-->
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>

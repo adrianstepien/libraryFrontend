@@ -1,0 +1,38 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Książki</h4>
+                    </div>
+                    <br>
+                    <form class="form-inline md-form mr-auto mb-4" >
+                        <input #findPhrase name="findPhrase" class="form-control mr-sm-2" style="margin-left:5px;" type="text" placeholder="Wyszukaj" aria-label="Search">
+                        <button style="margin-left:5px;" class="btn btn-default" (click)="findBooksByName(findPhrase.value)">Wyszukaj</button>
+                    </form>
+                    <br>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th *ngFor="let cell of bookHeader.header">{{ cell }}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let book of books">
+                                <td><button class="btn btn-simple" (click)="addBookToRegister(book)"><i class="fa fa-plus"></i></button></td>
+                                <td>{{ book.title}}</td>
+                                <td>{{ book.authors}}</td>
+                                <td>{{ book.publishedDate}}</td>
+                                <td>{{ book.pageCount}}</td>
+                                <td><button class="btn btn-simple" (click)="redirectToImage(book.imageLink)"><i class="fa fa-image"></i></button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
