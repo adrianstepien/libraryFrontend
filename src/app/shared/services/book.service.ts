@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BookEntity } from '../classes/book-entity';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class BookService {
@@ -9,7 +10,7 @@ export class BookService {
   bookToEdit: BookEntity;
 
   constructor(private http: HttpClient) {
-    this.libraryUrl = 'http://127.0.0.1:8080/api/book'
+    this.libraryUrl = environment.backend_url
   }
 
   public findBooksInLibrary(searchPhrase: string): Observable<BookEntity[]> {
