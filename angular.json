@@ -83,6 +83,11 @@
               "node_modules/bootstrap-notify/bootstrap-notify.js",
               "node_modules/chartist/dist/chartist.js"
             ],
+            "environmentSource": "environments/environment.ts",
+            "environments": {
+              "source": "environments/environment.ts",
+              "prod": "environments/environment.prod.ts"
+            },
             "styles": [
               "node_modules/animate.css/animate.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
