@@ -48,6 +48,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label>Opis książki</label>
+                                <textarea rows="5" class="form-control" [(ngModel)]="bookToEdit.description" name="description" placeholder="Opis"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label>Własny opis</label>
                                 <textarea rows="5" class="form-control" [(ngModel)]="bookToEdit.ownReview" name="ownReview" placeholder="Wprowadź własny opis"></textarea>
                             </div>
