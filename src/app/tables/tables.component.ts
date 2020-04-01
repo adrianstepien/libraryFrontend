@@ -14,12 +14,14 @@ declare interface BookHeader {
 export class TablesComponent implements OnInit {
     public bookHeader: BookHeader;
     public books: BookEntity[];
+    googleBookToDisplay: BookEntity;
+    showDetailsModal = false;
 
   constructor(private bookService: BookService) { }
 
     ngOnInit() {
         this.bookHeader = {
-            header: ['', 'Tytuł', 'Autor', 'Data publikacji', 'Liczba stron', 'Okładka']
+            header: ['', 'Tytuł', 'Autor', 'Data publikacji', 'Liczba stron', 'Szczegóły']
         };
     }
 
@@ -36,5 +38,11 @@ export class TablesComponent implements OnInit {
     addBookToRegister(selectedBook: BookEntity) {
        this.bookService.addBookToRegister(selectedBook).subscribe(data => {
         });
+    }
+
+    redirectToGoogleBook(googleBookDetails:BookEntity) {
+        this.googleBookToDisplay = googleBookDetails;
+        this.showDetailsModal = true;
+        this.bookService.setGoogleBookToDisplay(googleBookDetails);
     }
 }
