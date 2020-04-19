@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BookEntity } from '../../shared/classes/book-entity'
 import { BookService } from '../../shared/services/book.service'
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-book',
@@ -10,6 +11,7 @@ import { BookService } from '../../shared/services/book.service'
 export class BookComponent implements OnInit {
   bookToEdit: BookEntity;
   showDetailsModal = false;
+  btnColour = 'red';
 
   constructor(private bookService: BookService, private router: Router) {
   }
@@ -23,10 +25,29 @@ export class BookComponent implements OnInit {
     }
   }
 
-  deleteBook(bookToDelete:BookEntity) {
-    this.bookService.deleteBookFromRegister(bookToDelete.id).subscribe();
-    this.router.navigate(['icons']);
-  }
+    selectFile(files: FileList, bookId:string) {
+        this.bookService.uploadFileToBook(files.item(0), bookId).subscribe(data => {
+                this.btnColour= 'green';
+              }, error => {
+                console.log(error);
+              });
+    }
+
+    deleteBook(bookToDelete:BookEntity) {
+        this.bookService.deleteBookFromRegister(bookToDelete.id).subscribe();
+        this.router.navigate(['icons']);
+    }
+
+    downloadBookFile(bookId:string, title:string) {
+        this.bookService.downloadBookFile(bookId).subscribe(resp => {
+                                      this.saveFile(resp, "application/x-mobipocket-ebook",title);
+                                    });
+    }
+
+    saveFile(data: any, type: string, fileName: string) {
+        var blob = new Blob([data], {type: type.toString()});
+        saveAs(blob, fileName + ".mobi");
+    }
 
   updateBook(bookToUpdate:BookEntity) {
     this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {

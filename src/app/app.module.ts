@@ -9,7 +9,8 @@ import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import * as fileSaver from 'file-saver';
+import { map } from 'rxjs/operators';
 
 import { AppComponent } from './app.component';
 

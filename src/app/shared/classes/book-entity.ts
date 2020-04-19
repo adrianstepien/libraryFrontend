@@ -8,5 +8,5 @@ export class BookEntity {
   imageLink: string;
   ownReview: string;
   ownRating: number;
-  pathToFile: string;
+  fileId: string;
 }
