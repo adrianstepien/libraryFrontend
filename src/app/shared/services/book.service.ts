@@ -25,6 +25,10 @@ export class BookService {
         return this.http.get<BookEntity[]>(this.libraryUrl);
     }
 
+    public hasBookFile(bookId: number): Observable<Boolean> {
+        return this.http.get<Boolean>(this.libraryUrl + '/hasFile/' + bookId);
+    }
+
     public addBookToRegister(selectedBook: BookEntity): Observable<BookEntity> {
         return this.http.post<BookEntity>(this.libraryUrl, selectedBook);
     }

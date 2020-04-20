@@ -12,6 +12,8 @@ export class BookComponent implements OnInit {
   bookToEdit: BookEntity;
   showDetailsModal = false;
   btnColour = 'red';
+  successMessage;
+  errorMessage;
 
   constructor(private bookService: BookService, private router: Router) {
   }
@@ -20,6 +22,17 @@ export class BookComponent implements OnInit {
     if (this.bookService.getBookToEdit() != null) {
       this.bookToEdit = this.bookService.getBookToEdit();
       this.bookService.setBookToEdit(null);
+      this.bookService.hasBookFile(this.bookToEdit.id).subscribe(data => {
+                                                                              if (data) {
+                                                                                this.btnColour = 'green';
+                                                                              } else {
+                                                                                this.btnColour = 'red';
+                                                                              }
+                                                                          }, error => {
+                                                                            console.log(error);
+                                                                          });
+
+
     } else {
       this.router.navigate(['icons']);
     }
@@ -40,7 +53,11 @@ export class BookComponent implements OnInit {
 
     downloadBookFile(bookId:string, title:string) {
         this.bookService.downloadBookFile(bookId).subscribe(resp => {
-                                      this.saveFile(resp, "application/x-mobipocket-ebook",title);
+                                        if (resp.byteLength > 0) {
+                                            this.saveFile(resp, "application/x-mobipocket-ebook",title);
+                                        } else {
+                                            this.errorMessage = "Dla tej pozycji nie ma przypisanego pliku";
+                                        }
                                     });
     }
 
@@ -49,9 +66,9 @@ export class BookComponent implements OnInit {
         saveAs(blob, fileName + ".mobi");
     }
 
-  updateBook(bookToUpdate:BookEntity) {
-    this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {
-            });
-    this.router.navigate(['icons']);
-  }
+    updateBook(bookToUpdate:BookEntity) {
+        this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {
+                });
+        this.router.navigate(['icons']);
+    }
 }

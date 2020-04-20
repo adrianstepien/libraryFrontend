@@ -1,4 +1,10 @@
 <div class="main-content" >
+    <div class="alert alert-success" role="alert" *ngIf="successMessage != null">
+        {{successMessage}}
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage != null">
+        {{errorMessage}}
+    </div>
     <div class="col-md-12">
         <div class="card">
             <div class="header">
@@ -66,17 +72,17 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button type="button" [style.background-color]="btnColour" class="btn btn-info btn-fill pull-right" (click)="fileInput.click()">
+                                <button type="submit" class="btn btn-info btn-fill pull-right" (click)="downloadBookFile(bookToEdit.id, bookToEdit.title)">Sciagnij</button>
+                                <button type="button" style="margin-right: 5px;" [style.background-color]="btnColour" class="btn btn-info btn-fill pull-right" (click)="fileInput.click()">
                                     <span>Wgraj plik</span>
                                     <input #fileInput type="file" (change)="selectFile($event.target.files, bookToEdit.id)" style="display:none;" />
                                 </button>
-                                <button type="submit" class="btn btn-info btn-fill pull-right" (click)="downloadBookFile(bookToEdit.id, bookToEdit.title)">Sciagnij</button>
                             </div>
                         </div>
                     </div>
 
                     <button type="submit" class="btn btn-info btn-fill pull-right" (click)="updateBook(bookToEdit)">Zaktualizuj pozycję</button>
-                    <button type="submit" class="btn btn-danger btn-fill pull-right" (click)="deleteBook(bookToEdit)">Usuń pozycję</button>
+                    <button type="submit" style="margin-right: 5px;" class="btn btn-danger btn-fill pull-right" (click)="deleteBook(bookToEdit)">Usuń pozycję</button>
                     <div class="clearfix"></div>
                 </form>
             </div>
