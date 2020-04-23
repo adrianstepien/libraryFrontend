@@ -41,7 +41,7 @@ export class BookService {
         return this.http.put<BookEntity>(this.libraryUrl, bookToUpdate);
     }
 
-    public uploadFileToBook(file: File, bookId:string): Observable<boolean | {}> {
+    public uploadFileToBook(file: File, bookId:number): Observable<boolean | {}> {
         const formData: FormData = new FormData();
         formData.append('bookFile', file, file.name);
         return this.http

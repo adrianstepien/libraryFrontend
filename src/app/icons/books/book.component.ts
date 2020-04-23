@@ -38,7 +38,7 @@ export class BookComponent implements OnInit {
     }
   }
 
-    selectFile(files: FileList, bookId:string) {
+    selectFile(files: FileList, bookId:number) {
         this.bookService.uploadFileToBook(files.item(0), bookId).subscribe(data => {
                 this.btnColour= 'green';
               }, error => {
