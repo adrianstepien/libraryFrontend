@@ -51,7 +51,7 @@ export class BookComponent implements OnInit {
         this.router.navigate(['icons']);
     }
 
-    downloadBookFile(bookId:string, title:string) {
+    downloadBookFile(bookId:number, title:string) {
         this.bookService.downloadBookFile(bookId).subscribe(resp => {
                                         if (resp.byteLength > 0) {
                                             this.saveFile(resp, "application/x-mobipocket-ebook",title);

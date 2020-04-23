@@ -33,7 +33,7 @@ export class BookService {
         return this.http.post<BookEntity>(this.libraryUrl, selectedBook);
     }
 
-    public downloadBookFile(bookId: string): Observable<ArrayBuffer> {
+    public downloadBookFile(bookId: number): Observable<ArrayBuffer> {
         return this.http.get(this.googleDriveUrl + '/getFile/' + bookId, {responseType: 'arraybuffer'});
     }
 
