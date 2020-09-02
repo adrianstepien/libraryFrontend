@@ -35,7 +35,7 @@
         "core-js": "2.6.9",
         "express": "^4.17.1",
         "file-saver": "^2.0.2",
-        "googleapis": "33.0.0",
+        "googleapis": "39.1.0",
         "jquery": "3.4.1",
         "path": "^0.12.7",
         "perfect-scrollbar": "1.4.0",
