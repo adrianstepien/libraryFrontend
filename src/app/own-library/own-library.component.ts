@@ -3,11 +3,11 @@ import { BookEntity } from '../shared/classes/book-entity'
 import { BookService } from '../shared/services/book.service'
 
 @Component({
-  selector: 'app-icons',
-  templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.css']
+  selector: 'app-own-library',
+  templateUrl: './own-library.component.html',
+  styleUrls: ['./own-library.component.css']
 })
-export class IconsComponent implements OnInit {
+export class OwnLibraryComponent implements OnInit {
   public booksInRegister: BookEntity[];
   bookToEdit: BookEntity;
   showDetailsModal = false;

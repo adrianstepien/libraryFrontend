@@ -20,7 +20,7 @@ export class GoogleBookComponent implements OnInit {
       this.googleBookToDisplay = this.bookService.getGoogleBookToDisplay();
       this.bookService.setGoogleBookToDisplay(null);
     } else {
-      this.router.navigate(['icons']);
+      this.router.navigate(['own-library']);
     }
   }
 
