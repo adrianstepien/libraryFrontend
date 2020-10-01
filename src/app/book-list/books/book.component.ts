@@ -34,7 +34,7 @@ export class BookComponent implements OnInit {
 
 
     } else {
-      this.router.navigate(['own-library']);
+      this.router.navigate(['book-list']);
     }
   }
 
@@ -48,7 +48,7 @@ export class BookComponent implements OnInit {
 
     deleteBook(bookToDelete:BookEntity) {
         this.bookService.deleteBookFromRegister(bookToDelete.id).subscribe();
-        this.router.navigate(['own-library']);
+        this.router.navigate(['book-list']);
     }
 
     downloadBookFile(bookId:number, title:string) {
@@ -69,6 +69,6 @@ export class BookComponent implements OnInit {
     updateBook(bookToUpdate:BookEntity) {
         this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {
                 });
-        this.router.navigate(['own-library']);
+        this.router.navigate(['book-list']);
     }
 }

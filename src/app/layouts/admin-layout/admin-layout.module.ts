@@ -12,8 +12,8 @@ import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
 import { TablesComponent } from '../../tables/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
-import { OwnLibraryComponent } from '../../own-library/own-library.component';
-import { BookComponent } from '../../own-library/books/book.component';
+import { BookListComponent } from '../../book-list/book-list.component';
+import { BookComponent } from '../../book-list/books/book.component';
 import { GoogleBookComponent } from '../../tables/googleBooksDetails/googleBook.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
@@ -33,7 +33,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
     UserComponent,
     TablesComponent,
     TypographyComponent,
-    OwnLibraryComponent,
+    BookListComponent,
     BookComponent,
     GoogleBookComponent,
     MapsComponent,
