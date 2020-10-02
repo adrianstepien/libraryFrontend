@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
-import { TablesComponent } from '../../tables/tables.component';
+import { BookBrowserComponent } from '../../book-browser/book-browser.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { BookListComponent } from '../../book-list/book-list.component';
 import { BookComponent } from '../../book-list/books/book.component';
@@ -14,7 +14,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: HomeComponent },
     { path: 'user',           component: UserComponent },
-    { path: 'table',          component: TablesComponent },
+    { path: 'book-browser',          component: BookBrowserComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'book-list',      component: BookListComponent },
     { path: 'book/:id',       component: BookComponent },

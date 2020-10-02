@@ -10,7 +10,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
-import { TablesComponent } from '../../tables/tables.component';
+import { BookBrowserComponent } from '../../book-browser/book-browser.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { BookListComponent } from '../../book-list/book-list.component';
 import { BookComponent } from '../../book-list/books/book.component';
@@ -31,7 +31,7 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
   declarations: [
     HomeComponent,
     UserComponent,
-    TablesComponent,
+    BookBrowserComponent,
     TypographyComponent,
     BookListComponent,
     BookComponent,

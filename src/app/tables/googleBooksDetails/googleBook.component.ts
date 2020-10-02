@@ -34,6 +34,6 @@ export class GoogleBookComponent implements OnInit {
   updateBook(bookToUpdate:BookEntity) {
     this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {
             });
-    this.router.navigate(['table']);
+    this.router.navigate(['book-browser']);
   }
 }

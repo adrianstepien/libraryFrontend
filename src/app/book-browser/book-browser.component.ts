@@ -7,11 +7,11 @@ declare interface BookHeader {
 }
 
 @Component({
-  selector: 'app-tables',
-  templateUrl: './tables.component.html',
-  styleUrls: ['./tables.component.css']
+  selector: 'app-book-browser',
+  templateUrl: './book-browser.component.html',
+  styleUrls: ['./book-browser.component.css']
 })
-export class TablesComponent implements OnInit {
+export class BookBrowserComponent implements OnInit {
     public bookHeader: BookHeader;
     public books: BookEntity[];
     googleBookToDisplay: BookEntity;
