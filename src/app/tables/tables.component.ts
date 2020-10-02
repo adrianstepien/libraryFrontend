@@ -15,7 +15,6 @@ export class TablesComponent implements OnInit {
     public bookHeader: BookHeader;
     public books: BookEntity[];
     googleBookToDisplay: BookEntity;
-    showDetailsModal = false;
 
   constructor(private bookService: BookService) { }
 
@@ -42,7 +41,6 @@ export class TablesComponent implements OnInit {
 
     redirectToGoogleBook(googleBookDetails:BookEntity) {
         this.googleBookToDisplay = googleBookDetails;
-        this.showDetailsModal = true;
         this.bookService.setGoogleBookToDisplay(googleBookDetails);
     }
 }

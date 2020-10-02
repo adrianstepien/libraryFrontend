@@ -9,8 +9,6 @@ import { BookService } from '../shared/services/book.service'
 })
 export class BookListComponent implements OnInit {
   public booksInRegister: BookEntity[];
-  bookToEdit: BookEntity;
-  showDetailsModal = false;
 
   constructor(private bookService: BookService) { }
 
@@ -19,11 +17,4 @@ export class BookListComponent implements OnInit {
         this.booksInRegister = data;
     });
   }
-
-  onDetailsButtonClick(rowToEdit:BookEntity) {
-    this.bookToEdit = rowToEdit;
-    this.showDetailsModal = true;
-    this.bookService.setBookToEdit(rowToEdit);
-  }
-
 }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BookEntity } from '../../shared/classes/book-entity'
 import { BookService } from '../../shared/services/book.service'
 import { saveAs } from 'file-saver';
@@ -10,32 +10,29 @@ import { saveAs } from 'file-saver';
 })
 export class BookComponent implements OnInit {
   bookToEdit: BookEntity;
-  showDetailsModal = false;
   btnColour = 'red';
   successMessage;
   errorMessage;
 
-  constructor(private bookService: BookService, private router: Router) {
-  }
+  constructor(private bookService: BookService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.bookService.getBookToEdit() != null) {
-      this.bookToEdit = this.bookService.getBookToEdit();
-      this.bookService.setBookToEdit(null);
-      this.bookService.hasBookFile(this.bookToEdit.id).subscribe(data => {
-                                                                              if (data) {
-                                                                                this.btnColour = 'green';
-                                                                              } else {
-                                                                                this.btnColour = 'red';
-                                                                              }
-                                                                          }, error => {
-                                                                            console.log(error);
-                                                                          });
-
-
-    } else {
-      this.router.navigate(['book-list']);
-    }
+      let id = +this.route.snapshot.paramMap.get('id');
+      if (id != null) {
+        this.bookService.findBookInPrivateRegisterById(id).subscribe(
+         data => {
+            this.bookToEdit = data
+         });
+         this.bookService.hasBookFile(id).subscribe(data => {
+                                                                 if (data) {
+                                                                   this.btnColour = 'green';
+                                                                 } else {
+                                                                   this.btnColour = 'red';
+                                                                 }
+                                                             }, error => {
+                                                               console.log(error);
+                                                             });
+      }
   }
 
     selectFile(files: FileList, bookId:number) {

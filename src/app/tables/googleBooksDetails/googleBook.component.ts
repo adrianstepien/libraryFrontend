@@ -10,7 +10,6 @@ import { Location } from '@angular/common';
 })
 export class GoogleBookComponent implements OnInit {
   googleBookToDisplay: BookEntity;
-  showDetailsModal = false;
 
   constructor(private bookService: BookService, private router: Router, private location: Location) {
   }
@@ -30,8 +29,6 @@ export class GoogleBookComponent implements OnInit {
 
   onDetailsButtonClick(googleBookToDisplay:BookEntity) {
     this.googleBookToDisplay = googleBookToDisplay;
-    this.showDetailsModal = true;
-    this.bookService.setBookToEdit(googleBookToDisplay);
   }
 
   updateBook(bookToUpdate:BookEntity) {

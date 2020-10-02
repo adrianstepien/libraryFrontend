@@ -9,12 +9,15 @@ import { environment } from '../../../environments/environment';
 export class BookService {
     private libraryUrl: string;
     private googleDriveUrl: string;
-    bookToEdit: BookEntity;
     googleBookToDisplay: BookEntity;
 
     constructor(private http: HttpClient) {
         this.libraryUrl = environment.backend_url + '/api/book';
         this.googleDriveUrl = environment.backend_url;
+    }
+
+    public findBookInPrivateRegisterById(id: number): Observable<BookEntity> {
+        return this.http.get<BookEntity>(this.libraryUrl + '/' + id);
     }
 
     public findBooksInLibrary(searchPhrase: string): Observable<BookEntity[]> {
@@ -51,14 +54,6 @@ export class BookService {
 
     public deleteBookFromRegister(id: number){
         return this.http.delete(this.libraryUrl + "/" + id);
-    }
-
-    public setBookToEdit(bookToEdit: BookEntity) {
-        this.bookToEdit = bookToEdit;
-    }
-
-    public getBookToEdit(): BookEntity {
-        return this.bookToEdit;
     }
 
     public setGoogleBookToDisplay(googleBookToDisplay: BookEntity) {

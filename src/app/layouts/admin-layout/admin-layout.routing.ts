@@ -17,7 +17,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table',          component: TablesComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'book-list',      component: BookListComponent },
-    { path: 'book',           component: BookComponent },
+    { path: 'book/:id',       component: BookComponent },
     { path: 'googleBook',     component: GoogleBookComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },

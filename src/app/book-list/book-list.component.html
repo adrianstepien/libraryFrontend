@@ -14,8 +14,7 @@
                                 <p>Własny opis: {{ book.ownReview}}</p>
                             </div>
                             <div class="media-right align-self-center">
-                                <button class="btn btn-default" (click)="onDetailsButtonClick(book)" routerLink= "/book" >Szczegóły</button>
-                                <!--<app-book [bookToEdit]="book"></app-book>-->
+                                <button class="btn btn-default" [routerLink]= "['/book', book.id]" >Szczegóły</button>
                             </div>
                         </div>
                     </li>
