@@ -1,39 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, Inject} from '@angular/core';
 import { BookEntity } from '../../shared/classes/book-entity'
 import { BookService } from '../../shared/services/book.service'
-import { Location } from '@angular/common';
+import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 
 @Component({
   selector: 'app-googleBook',
   templateUrl: './googleBook.component.html'
 })
 export class GoogleBookComponent implements OnInit {
-  googleBookToDisplay: BookEntity;
 
-  constructor(private bookService: BookService, private router: Router, private location: Location) {
+  constructor(private bookService: BookService,
+    public dialogRef: MatDialogRef<GoogleBookComponent>,
+    @Inject(MAT_DIALOG_DATA) public googleBookToDisplay: BookEntity) {
   }
 
   ngOnInit() {
-    if (this.bookService.getGoogleBookToDisplay() != null) {
-      this.googleBookToDisplay = this.bookService.getGoogleBookToDisplay();
-      this.bookService.setGoogleBookToDisplay(null);
-    } else {
-      this.router.navigate(['book-list']);
-    }
-  }
-
-  returnToPreviousTab() {
-    this.location.back();
-  }
-
-  onDetailsButtonClick(googleBookToDisplay:BookEntity) {
-    this.googleBookToDisplay = googleBookToDisplay;
   }
 
   updateBook(bookToUpdate:BookEntity) {
-    this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {
+    this.bookService.addBookToRegister(bookToUpdate).subscribe(data => {
             });
-    this.router.navigate(['book-browser']);
+    this.dialogRef.close();
   }
+
+  close(){
+      this.dialogRef.close();
+    }
 }

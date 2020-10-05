@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookEntity } from '../shared/classes/book-entity'
 import { BookService } from '../shared/services/book.service'
+import { MatDialog } from '@angular/material';
+import { GoogleBookComponent } from '../tables/googleBooksDetails/googleBook.component';
 
 declare interface BookHeader {
     header: string[];
@@ -16,7 +18,8 @@ export class BookBrowserComponent implements OnInit {
     public books: BookEntity[];
     googleBookToDisplay: BookEntity;
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService,
+              private dialog: MatDialog,) { }
 
     ngOnInit() {
         this.bookHeader = {
@@ -39,8 +42,18 @@ export class BookBrowserComponent implements OnInit {
         });
     }
 
-    redirectToGoogleBook(googleBookDetails:BookEntity) {
-        this.googleBookToDisplay = googleBookDetails;
-        this.bookService.setGoogleBookToDisplay(googleBookDetails);
+    openGoogleBookDetailsDialog(googleBookDetails:BookEntity): void {
+        this.dialog.open(GoogleBookComponent, {
+            data: {
+              id: googleBookDetails.id,
+              title: googleBookDetails.title,
+              authors: googleBookDetails.authors,
+              publishedDate: googleBookDetails.publishedDate,
+              pageCount: googleBookDetails.pageCount,
+              description: googleBookDetails.description,
+              imageLink: googleBookDetails.imageLink,
+              fileId: googleBookDetails.fileId
+            }
+        });
     }
 }

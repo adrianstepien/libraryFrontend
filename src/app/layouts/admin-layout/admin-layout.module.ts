@@ -18,7 +18,7 @@ import { GoogleBookComponent } from '../../tables/googleBooksDetails/googleBook.
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -26,7 +26,11 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     LbdModule,
-    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
+    MatDialogModule
+  ],
+  entryComponents: [
+    GoogleBookComponent
   ],
   declarations: [
     HomeComponent,
