@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookEntity } from '../shared/classes/book-entity'
 import { BookService } from '../shared/services/book.service'
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { GoogleBookComponent } from '../tables/googleBooksDetails/googleBook.component';
 
 declare interface BookHeader {

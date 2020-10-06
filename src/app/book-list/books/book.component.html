@@ -7,8 +7,14 @@
     </div>
     <div class="col-md-12">
         <div class="card">
-            <div class="header">
+            <div class="header" style="text-align:center">
                 <h4 class="title">Szczegółowe informacje</h4>
+            </div>
+            <div style="text-align:center">
+                <h5>
+                    Ocena książki
+                </h5>
+                <star-rating value="5" totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
             </div>
             <div class="content">
                 <form >

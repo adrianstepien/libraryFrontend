@@ -3,12 +3,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { BookEntity } from '../../shared/classes/book-entity'
 import { BookService } from '../../shared/services/book.service'
 import { saveAs } from 'file-saver';
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html'
 })
 export class BookComponent implements OnInit {
+  readonly totalstar = 10;
   bookToEdit: BookEntity;
   btnColour = 'red';
   successMessage;
@@ -68,4 +70,11 @@ export class BookComponent implements OnInit {
                 });
         this.router.navigate(['book-list']);
     }
+
+    onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+        alert(`Old Value:${$event.oldValue},
+          New Value: ${$event.newValue},
+          Checked Color: ${$event.starRating.checkedcolor},
+          Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+      }
 }

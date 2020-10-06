@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { BookEntity } from '../../shared/classes/book-entity'
 import { BookService } from '../../shared/services/book.service'
-import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
+import {MatDialogRef, MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-googleBook',
