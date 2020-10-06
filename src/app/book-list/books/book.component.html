@@ -14,7 +14,7 @@
                 <h5>
                     Ocena książki
                 </h5>
-                <star-rating value="5" totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
+                <star-rating value={{bookToEdit.ownRating}} totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px" readonly="false" (rate)="onRate($event)"></star-rating>
             </div>
             <div class="content">
                 <form >
@@ -87,8 +87,8 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-info btn-fill pull-right" (click)="updateBook(bookToEdit)">Zaktualizuj pozycję</button>
-                    <button type="submit" style="margin-right: 5px;" class="btn btn-danger btn-fill pull-right" (click)="deleteBook(bookToEdit)">Usuń pozycję</button>
+                    <button type="submit" class="btn btn-info btn-fill pull-right" (click)="updateBook()">Zaktualizuj pozycję</button>
+                    <button type="submit" style="margin-right: 5px;" class="btn btn-danger btn-fill pull-right" (click)="deleteBook()">Usuń pozycję</button>
                     <div class="clearfix"></div>
                 </form>
             </div>

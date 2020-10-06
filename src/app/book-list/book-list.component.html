@@ -11,7 +11,9 @@
                             </div>
                             <div class="media-body">
                                 <h4>{{ book.title}}</h4>
-                                <p>Własny opis: {{ book.ownReview}}</p>
+                                <p>
+                                    <star-rating value={{book.ownRating}} totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px" readonly="true"></star-rating>
+                                </p>
                             </div>
                             <div class="media-right align-self-center">
                                 <button class="btn btn-default" [routerLink]= "['/book', book.id]" >Szczegóły</button>

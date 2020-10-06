@@ -45,8 +45,8 @@ export class BookComponent implements OnInit {
               });
     }
 
-    deleteBook(bookToDelete:BookEntity) {
-        this.bookService.deleteBookFromRegister(bookToDelete.id).subscribe();
+    deleteBook() {
+        this.bookService.deleteBookFromRegister(this.bookToEdit.id).subscribe();
         this.router.navigate(['book-list']);
     }
 
@@ -65,16 +65,13 @@ export class BookComponent implements OnInit {
         saveAs(blob, fileName + ".mobi");
     }
 
-    updateBook(bookToUpdate:BookEntity) {
-        this.bookService.updateBookInRegister(bookToUpdate).subscribe(data => {
+    updateBook() {
+        this.bookService.updateBookInRegister(this.bookToEdit).subscribe(data => {
                 });
         this.router.navigate(['book-list']);
     }
 
     onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
-        alert(`Old Value:${$event.oldValue},
-          New Value: ${$event.newValue},
-          Checked Color: ${$event.starRating.checkedcolor},
-          Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+        this.bookToEdit.ownRating = $event.newValue;
       }
 }

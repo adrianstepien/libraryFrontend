@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookEntity } from '../shared/classes/book-entity'
 import { BookService } from '../shared/services/book.service'
+import { StarRatingComponent } from 'ng-starrating';
 
 @Component({
   selector: 'app-book-list',
@@ -9,6 +10,7 @@ import { BookService } from '../shared/services/book.service'
 })
 export class BookListComponent implements OnInit {
   public booksInRegister: BookEntity[];
+  readonly totalstar = 10;
 
   constructor(private bookService: BookService) { }
 
@@ -16,5 +18,9 @@ export class BookListComponent implements OnInit {
     this.bookService.findBooksInPrivateRegister().subscribe(data => {
         this.booksInRegister = data;
     });
+  }
+
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
+     console.log($event.newValue);
   }
 }
