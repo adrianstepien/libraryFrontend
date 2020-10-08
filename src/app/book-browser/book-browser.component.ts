@@ -3,6 +3,7 @@ import { BookEntity } from '../shared/classes/book-entity'
 import { BookService } from '../shared/services/book.service'
 import { MatDialog } from '@angular/material/dialog';
 import { GoogleBookComponent } from '../tables/googleBooksDetails/googleBook.component';
+import { AlertService } from '../alert';
 
 declare interface BookHeader {
     header: string[];
@@ -19,7 +20,7 @@ export class BookBrowserComponent implements OnInit {
     googleBookToDisplay: BookEntity;
 
   constructor(private bookService: BookService,
-              private dialog: MatDialog,) { }
+              private dialog: MatDialog, private alertService: AlertService) { }
 
     ngOnInit() {
         this.bookHeader = {
@@ -38,7 +39,11 @@ export class BookBrowserComponent implements OnInit {
     }
 
     addBookToRegister(selectedBook: BookEntity) {
-       this.bookService.addBookToRegister(selectedBook).subscribe(data => {
+       this.bookService.addBookToRegister(selectedBook).subscribe(
+       (data) => this.alertService.success("Dodano książkę " + data.title + " do biblioteczki."),
+       (error) => {
+                    this.alertService.error("Wystąpił błąd podczas dodawania pozycji.");
+                    console.log(error);
         });
     }
 

@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import * as fileSaver from 'file-saver';
 import { map } from 'rxjs/operators';
 
+import { AlertModule } from './alert';
 import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
@@ -28,7 +29,8 @@ import { BookService } from './shared/services/book.service';
     FooterModule,
     SidebarModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AlertModule
 ],
   declarations: [
     AppComponent,

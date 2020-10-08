@@ -1,0 +1,16 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+p {
+  font-family: Lato;
+}
+.alert{
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(1.25rem);
+}

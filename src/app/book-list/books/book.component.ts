@@ -4,6 +4,7 @@ import { BookEntity } from '../../shared/classes/book-entity'
 import { BookService } from '../../shared/services/book.service'
 import { saveAs } from 'file-saver';
 import { StarRatingComponent } from 'ng-starrating';
+import { AlertService } from '../../alert';
 
 @Component({
   selector: 'app-book',
@@ -16,7 +17,7 @@ export class BookComponent implements OnInit {
   successMessage;
   errorMessage;
 
-  constructor(private bookService: BookService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private bookService: BookService, private router: Router, private route: ActivatedRoute, private alertService: AlertService) { }
 
   ngOnInit() {
       let id = +this.route.snapshot.paramMap.get('id');
@@ -39,14 +40,21 @@ export class BookComponent implements OnInit {
 
     selectFile(files: FileList, bookId:number) {
         this.bookService.uploadFileToBook(files.item(0), bookId).subscribe(data => {
+                this.alertService.success("Plik został dodany.");
                 this.btnColour= 'green';
               }, error => {
+                this.alertService.error("Podczas dodawania pliku wystąpił błąd.");
                 console.log(error);
               });
     }
 
     deleteBook() {
-        this.bookService.deleteBookFromRegister(this.bookToEdit.id).subscribe();
+        this.bookService.deleteBookFromRegister(this.bookToEdit.id).subscribe(
+        (data) => this.alertService.success("Książka " + this.bookToEdit.title + " została usunięta."),
+        (error) => {
+            this.alertService.error("Podczas usuwania książki " + this.bookToEdit.title + " wystąpił błąd.");
+            console.log(error);
+        });
         this.router.navigate(['book-list']);
     }
 
@@ -66,12 +74,16 @@ export class BookComponent implements OnInit {
     }
 
     updateBook() {
-        this.bookService.updateBookInRegister(this.bookToEdit).subscribe(data => {
-                });
+        this.bookService.updateBookInRegister(this.bookToEdit).subscribe(
+                             (data) => this.alertService.success("Książka " + this.bookToEdit.title + " została zaktualizowana."),
+                             (error) => {
+                                 this.alertService.error("Podczas aktualizowania książki " + this.bookToEdit.title + " wystąpił błąd.");
+                                 console.log(error);
+                             });
         this.router.navigate(['book-list']);
     }
 
     onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
         this.bookToEdit.ownRating = $event.newValue;
-      }
+    }
 }

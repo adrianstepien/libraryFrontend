@@ -19,8 +19,4 @@ export class BookListComponent implements OnInit {
         this.booksInRegister = data;
     });
   }
-
-  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}) {
-     console.log($event.newValue);
-  }
 }
