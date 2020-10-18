@@ -19,6 +19,8 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { RatingModule } from 'ng-starrating';
 
 @NgModule({
@@ -29,7 +31,9 @@ import { RatingModule } from 'ng-starrating';
     LbdModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     MatDialogModule,
-    RatingModule
+    RatingModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [
     GoogleBookComponent
