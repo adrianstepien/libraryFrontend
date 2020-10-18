@@ -10,6 +10,7 @@ import { StarRatingComponent } from 'ng-starrating';
 })
 export class BookListComponent implements OnInit {
   public booksInRegister: BookEntity[];
+  public filteredBooks: BookEntity[];
   readonly totalstar = 10;
 
   constructor(private bookService: BookService) { }
@@ -17,6 +18,13 @@ export class BookListComponent implements OnInit {
   ngOnInit() {
     this.bookService.findBooksInPrivateRegister().subscribe(data => {
         this.booksInRegister = data;
+        this.filteredBooks = data;
     });
+  }
+
+  filterByPhrase(filterPhrase: string) {
+    this.filteredBooks = this.booksInRegister.filter(
+        booksInRegister => booksInRegister.title.toUpperCase().includes(filterPhrase != null ? filterPhrase.toUpperCase() : "")
+    );
   }
 }

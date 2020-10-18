@@ -5,7 +5,11 @@
             <div class="col-md-12 offset-md-1 row-block">
                 <ul id="sortable">
                     <li>
-                        <div *ngFor="let book of booksInRegister" class="media">
+                        <form class="form-inline md-form mr-auto mb-4" >
+                            <input #filterPhrase name="filterPhrase" class="form-control mr-sm-2" style="margin-left:5px;" type="text" placeholder="Wyszukaj" aria-label="Search">
+                            <button style="margin-left:5px;" class="btn btn-default" (click)="filterByPhrase(filterPhrase.value)">Wyszukaj</button>
+                        </form>
+                        <div *ngFor="let book of filteredBooks" class="media">
                             <div class="media-left align-self-center">
                                 <img class="rounded-circle" src="{{ book.imageLink}}">
                             </div>
