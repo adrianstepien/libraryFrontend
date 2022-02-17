@@ -13,7 +13,7 @@ export class BookService {
 
     constructor(private http: HttpClient) {
         this.libraryUrl = environment.backend_url + '/api/book';
-        this.googleDriveUrl = environment.backend_url;
+        this.googleDriveUrl = environment.backend_url + '/api/google/drive';
     }
 
     public findBookInPrivateRegisterById(id: number): Observable<BookEntity> {
@@ -52,7 +52,7 @@ export class BookService {
         .map(() => { return true; });
     }
 
-    public deleteBookFromRegister(id: number){
+    public deleteBookFromRegister(id: number): Observable<{}>{
         return this.http.delete(this.libraryUrl + "/" + id);
     }
 
