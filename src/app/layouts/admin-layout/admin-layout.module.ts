@@ -19,6 +19,7 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     FormsModule,
     LbdModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
-    MatDialogModule
+    MatDialogModule,
+    NgbModule
   ],
   entryComponents: [
     GoogleBookComponent

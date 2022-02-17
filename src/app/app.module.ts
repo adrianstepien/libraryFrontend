@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app.routing';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import * as fileSaver from 'file-saver';
 import { map } from 'rxjs/operators';
 
@@ -27,8 +26,7 @@ import { BookService } from './shared/services/book.service';
     NavbarModule,
     FooterModule,
     SidebarModule,
-    AppRoutingModule,
-    FlexLayoutModule
+    AppRoutingModule
 ],
   declarations: [
     AppComponent,
