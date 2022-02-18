@@ -1,0 +1,6 @@
+.star { font-size: 3.5rem; color: #b0c4de; }
+.filled { color: #1e90ff; }
+.bad { color: #deb0b0; }
+.good { color: #b7f2b1; }
+.filled.bad { color: #ff1e1e; }
+.filled.good { color: #4dd13f; }

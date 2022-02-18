@@ -12,6 +12,11 @@
             </div>
             <div class="content">
                 <form >
+                    <ngb-rating [(rate)]="bookToEdit.ownRating">
+                        <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" [class.good]="index > 6">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

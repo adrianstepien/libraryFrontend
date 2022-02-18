@@ -22,3 +22,10 @@ background: linear-gradient(to bottom, #ff1303, #42275a); */
 .row-section .media .media-body p{padding: 0 15px; font-size:14px;}
 .row-section .media .media-body h4 {color: #6b456a; font-size: 18px; font-weight: 600; margin-bottom: 0; padding-left: 14px; margin-top:12px;}
 .btn-default{background:#de2a0b; color:#fff; border-radius:30px; border:none; font-size:16px;}
+
+.star { font-size: 2rem; color: #b0c4de; }
+.filled { color: #1e90ff; }
+.bad { color: #deb0b0; }
+.good { color: #b7f2b1; }
+.filled.bad { color: #ff1e1e; }
+.filled.good { color: #4dd13f; }

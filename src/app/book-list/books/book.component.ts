@@ -6,7 +6,8 @@ import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-book',
-  templateUrl: './book.component.html'
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.css']
 })
 export class BookComponent implements OnInit {
   bookToEdit: BookEntity;

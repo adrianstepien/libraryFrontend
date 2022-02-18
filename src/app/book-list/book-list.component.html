@@ -12,6 +12,13 @@
                             <div class="media-body">
                                 <h4>{{ book.title}}</h4>
                                 <p>Własny opis: {{ book.ownReview}}</p>
+                                <p>
+                                    <ngb-rating [(rate)]="book.ownRating" readonly="true">
+                                        <ng-template let-fill="fill" let-index="index">
+                                            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" [class.good]="index > 6">&#9733;</span>
+                                        </ng-template>
+                                    </ngb-rating>
+                                </p>
                             </div>
                             <div class="media-right align-self-center">
                                 <button class="btn btn-default" [routerLink]= "['/book', book.id]" >Szczegóły</button>
