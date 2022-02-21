@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/Rx';
 import { BookEntity } from '../classes/book-entity';
+import { BookEntityPage } from '../classes/book-entity-page';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -24,8 +25,13 @@ export class BookService {
         return this.http.get<BookEntity[]>(this.libraryUrl + '/findByParam/' + searchPhrase);
     }
 
-    public findBooksInPrivateRegister(): Observable<BookEntity[]> {
-        return this.http.get<BookEntity[]>(this.libraryUrl);
+    public findBooksInPrivateRegister(page: string, sortOrder: string, sortField: string): Observable<BookEntityPage> {
+        const params = new HttpParams()
+          .set('page', page)
+          .set('size', "5")
+          .set('direction', sortOrder)
+          .set('sortField', sortField);
+        return this.http.get<BookEntityPage>(this.libraryUrl, {'params': params});
     }
 
     public hasBookFile(bookId: number): Observable<Boolean> {

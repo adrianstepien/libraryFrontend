@@ -3,29 +3,57 @@
         <div class="container">
             <br>
             <div class="col-md-12 offset-md-1 row-block">
-                <ul id="sortable">
-                    <li>
-                        <div *ngFor="let book of booksInRegister" class="media">
-                            <div class="media-left align-self-center">
-                                <img class="rounded-circle" src="{{ book.imageLink}}">
-                            </div>
-                            <div class="media-body">
-                                <h4>{{ book.title}}</h4>
-                                <p>Własny opis: {{ book.ownReview}}</p>
-                                <p>
-                                    <ngb-rating [(rate)]="book.ownRating" readonly="true">
-                                        <ng-template let-fill="fill" let-index="index">
-                                            <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" [class.good]="index > 6">&#9733;</span>
-                                        </ng-template>
-                                    </ngb-rating>
-                                </p>
-                            </div>
-                            <div class="media-right align-self-center">
-                                <button class="btn btn-default" [routerLink]= "['/book', book.id]" >Szczegóły</button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                <form class="form-inline md-form mr-auto mb-4" >
+                    <input #findPhrase name="findPhrase" class="form-control mr-sm-2" style="margin-left:5px;" type="text" placeholder="Wyszukaj" aria-label="Search">
+                    <button style="margin-left:5px;" class="btn btn-default" (click)="findBooksByPhrase(findPhrase.value)">Wyszukaj</button>
+                </form>
+                <mat-form-field appearance="fill" style="margin-left:5px; margin-top:5px; font-size: 10px">
+                    <mat-label>Sortuj:</mat-label>
+                    <mat-select (selectionChange)="chooseSortOrder($event.value)">
+                        <mat-option *ngFor="let order of sortParam" [value]="order">
+                            {{order}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div *ngFor="let book of booksInRegister" class="media">
+                    <div class="media-left align-self-center">
+                        <img class="rounded-circle" src="{{book.imageLink}}">
+                    </div>
+                    <div class="media-body">
+                        <h4>{{book.title}}</h4>
+                        <p>Własny opis: {{ book.ownReview}}</p>
+                        <p>
+                            <ngb-rating [(rate)]="book.ownRating" readonly="true">
+                                <ng-template let-fill="fill" let-index="index">
+                                    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3" [class.good]="index > 6">&#9733;</span>
+                                </ng-template>
+                            </ngb-rating>
+                        </p>
+                    </div>
+                    <div class="media-right align-self-center">
+                        <button class="btn btn-default" [routerLink]= "['/book', book.id]">Szczegóły</button>
+                    </div>
+                </div>
+                <br>
+                <div class="card-footer pb-0 pt-3">
+                    <ul *ngIf="bookEntityPage" class="pagination">
+                        <li [ngClass]="{disabled:bookEntityPage.number === 0}" class="page-item first-item">
+                            <a (click)="loadSite(0)" class="page-link">First</a>
+                        </li>
+                        <li [ngClass]="{disabled:bookEntityPage.number === 0}" class="page-item previous-item">
+                            <a (click)="loadSite(bookEntityPage.number - 1)" class="page-link">Previous</a>
+                        </li>
+                        <li *ngFor="let totalPages of toArray(bookEntityPage.totalPages); let pageNumber = index" [ngClass]="{active:bookEntityPage.number === pageNumber}" class="page-item number-item">
+                            <a (click)="loadSite(pageNumber)" class="page-link">{{pageNumber + 1}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:bookEntityPage.number === bookEntityPage.totalPages - 1}" class="page-item next-item">
+                            <a (click)="loadSite(bookEntityPage.number + 1)" class="page-link">Next</a>
+                        </li>
+                        <li [ngClass]="{disabled:bookEntityPage.number === bookEntityPage.totalPages - 1}" class="page-item last-item">
+                            <a (click)="loadSite(bookEntityPage.totalPages - 1)" class="page-link">Last</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

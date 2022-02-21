@@ -20,6 +20,8 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSelectModule } from '@angular/material';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   imports: [
@@ -29,7 +31,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LbdModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     MatDialogModule,
-    NgbModule
+    NgbModule,
+    MatSelectModule
   ],
   entryComponents: [
     GoogleBookComponent
@@ -44,7 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     GoogleBookComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent
+    UpgradeComponent,
+    JwPaginationComponent
   ]
 })
 
