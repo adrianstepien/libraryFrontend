@@ -21,8 +21,8 @@ export class BookService {
         return this.http.get<BookEntity>(this.libraryUrl + '/' + id);
     }
 
-    public findBooksInLibrary(searchPhrase: string): Observable<BookEntity[]> {
-        return this.http.get<BookEntity[]>(this.libraryUrl + '/findByParam/' + searchPhrase);
+    public findBooksInGoogleLibrary(searchPhrase: string): Observable<BookEntity[]> {
+        return this.http.get<BookEntity[]>(this.libraryUrl + '/google/findByParam/' + searchPhrase);
     }
 
     public findBooksInPrivateRegister(page: string, sortOrder: string, sortField: string): Observable<BookEntityPage> {
@@ -33,6 +33,15 @@ export class BookService {
           .set('sortField', sortField);
         return this.http.get<BookEntityPage>(this.libraryUrl, {'params': params});
     }
+
+    public findBooksInPrivateRegisterByTitle(page: string, sortOrder: string, sortField: string, searchPhrase: string): Observable<BookEntityPage> {
+            const params = new HttpParams()
+              .set('page', page)
+              .set('size', "5")
+              .set('direction', sortOrder)
+              .set('sortField', sortField);
+            return this.http.get<BookEntityPage>(this.libraryUrl + '/byTitle/' + searchPhrase, {'params': params});
+        }
 
     public hasBookFile(bookId: number): Observable<Boolean> {
         return this.http.get<Boolean>(this.libraryUrl + '/hasFile/' + bookId);

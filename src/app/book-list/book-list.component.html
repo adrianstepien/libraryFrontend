@@ -5,9 +5,9 @@
             <div class="col-md-12 offset-md-1 row-block">
                 <form class="form-inline md-form mr-auto mb-4" >
                     <input #findPhrase name="findPhrase" class="form-control mr-sm-2" style="margin-left:5px;" type="text" placeholder="Wyszukaj" aria-label="Search">
-                    <button style="margin-left:5px;" class="btn btn-default" (click)="findBooksByPhrase(findPhrase.value)">Wyszukaj</button>
+                    <button style="margin-left:5px;" class="btn btn-default" (click)="findBooksByTitle(findPhrase.value)">Wyszukaj</button>
                 </form>
-                <mat-form-field appearance="fill" style="margin-left:5px; margin-top:5px; font-size: 10px">
+                <mat-form-field appearance="fill" style="margin-left:5px; margin-top:5px; font-size: 10px" *ngIf="!findPhrase.value">
                     <mat-label>Sortuj:</mat-label>
                     <mat-select (selectionChange)="chooseSortOrder($event.value)">
                         <mat-option *ngFor="let order of sortParam" [value]="order">

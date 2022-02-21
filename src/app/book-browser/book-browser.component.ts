@@ -28,7 +28,7 @@ export class BookBrowserComponent implements OnInit {
     }
 
     findBooksByName(searchPhrase: string) {
-        this.bookService.findBooksInLibrary(searchPhrase).subscribe(data => {
+        this.bookService.findBooksInGoogleLibrary(searchPhrase).subscribe(data => {
             this.books = data;
         });
     }

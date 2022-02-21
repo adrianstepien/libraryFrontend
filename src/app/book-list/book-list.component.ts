@@ -32,9 +32,17 @@ export class BookListComponent implements OnInit {
         this.getBooksFromRegister();
     }
 
-    findBooksByPhrase(searchPhrase: string) {
-        console.log(searchPhrase);
-        //this.findBooksInPrivateRegister();
+    findBooksByTitle(searchPhrase: string) {
+        if (searchPhrase) {
+            this.resetPageParams();
+            this.bookService.findBooksInPrivateRegisterByTitle(this.siteIndex, this.sortOrder, this.sortField, searchPhrase).subscribe(data => {
+                  this.booksInRegister = data.content;
+                  this.bookEntityPage = data;
+            });
+        } else {
+            this.getBooksFromRegister();
+        }
+
     }
 
     chooseSortOrder(searchPhrase: string) {
@@ -58,5 +66,11 @@ export class BookListComponent implements OnInit {
               this.booksInRegister = data.content;
               this.bookEntityPage = data;
         });
+    }
+
+    private resetPageParams() {
+        this.siteIndex = "0";
+        this.sortOrder = "DESC";
+        this.sortField = "OWN_RATING";
     }
 }
