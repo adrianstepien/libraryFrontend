@@ -11,14 +11,18 @@ import { BookService } from '../shared/services/book.service'
 export class BookListComponent implements OnInit {
     private RATE_DESC = "Ocena malejąco";
     private RATE_ASC = "Ocena rosnąco";
+    private DATE_DESC = "Data przeczytania malejąco";
+    private DATE_ASC = "Data przeczytania rosnąco";
     public siteIndex = "0";
     public sortOrder = "DESC";
-    public sortField = "OWN_RATING";
+    public sortField = "DATE_OF_READING";
     public booksInRegister: BookEntity[];
     public bookEntityPage: {};
     public sortParam: string[] = [
+        this.RATE_DESC,
         this.RATE_ASC,
-        this.RATE_DESC
+        this.DATE_DESC,
+        this.DATE_ASC
     ];
 
     constructor(private bookService: BookService) { }
@@ -42,19 +46,23 @@ export class BookListComponent implements OnInit {
         } else {
             this.getBooksFromRegister();
         }
-
     }
 
     chooseSortOrder(searchPhrase: string) {
         if (searchPhrase === this.RATE_ASC) {
             this.sortOrder = "ASC";
             this.sortField = "OWN_RATING"
-            this.getBooksFromRegister();
         } else if (searchPhrase === this.RATE_DESC) {
-            this.sortOrder = "DESC";
+            this.sortOrder = "ASC";
             this.sortField = "OWN_RATING"
-            this.getBooksFromRegister();
+        } else if (searchPhrase === this.DATE_ASC) {
+            this.sortOrder = "ASC";
+            this.sortField = "DATE_OF_READING"
+        } else if (searchPhrase === this.DATE_DESC) {
+            this.sortOrder = "DESC";
+            this.sortField = "DATE_OF_READING"
         }
+        this.getBooksFromRegister();
     }
 
     toArray(i: number) {
@@ -71,6 +79,6 @@ export class BookListComponent implements OnInit {
     private resetPageParams() {
         this.siteIndex = "0";
         this.sortOrder = "DESC";
-        this.sortField = "OWN_RATING";
+        this.sortField = "DATE_OF_READING";
     }
 }

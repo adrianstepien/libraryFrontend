@@ -36,22 +36,28 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>Data przeczytania</label>
+                                <input type="date" class="form-control" [(ngModel)]="bookToEdit.dateOfReading" name="dateOfReading" placeholder="Data przeczytania">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Data publikacji</label>
                                 <input type="text" class="form-control" [(ngModel)]="bookToEdit.publishedDate" name="publishedDate" placeholder="Data publikacji">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Liczba stron</label>
                                 <input type="text" class="form-control" [(ngModel)]="bookToEdit.pageCount" name="pageCount" placeholder="Liczba stron">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Link do zdjęcia</label>
-                                <input type="number" class="form-control" [(ngModel)]="bookToEdit.imageLink" name="imageLink" placeholder="Link do zdjęcia">
+                                <input type="text" class="form-control" [(ngModel)]="bookToEdit.imageLink" name="imageLink" placeholder="Link do zdjęcia">
                             </div>
                         </div>
                     </div>

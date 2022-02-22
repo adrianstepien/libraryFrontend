@@ -9,4 +9,5 @@ export class BookEntity {
   ownReview: string;
   ownRating: number;
   fileId: string;
+  dateOfReading: Date;
 }
