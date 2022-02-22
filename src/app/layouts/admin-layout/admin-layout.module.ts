@@ -21,7 +21,6 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSelectModule } from '@angular/material';
-import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   imports: [
@@ -32,8 +31,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     MatDialogModule,
     NgbModule,
-    MatSelectModule,
-    JwPaginationComponent
+    MatSelectModule
   ],
   entryComponents: [
     GoogleBookComponent
