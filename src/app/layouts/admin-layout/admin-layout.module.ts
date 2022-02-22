@@ -32,7 +32,8 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     MatDialogModule,
     NgbModule,
-    MatSelectModule
+    MatSelectModule,
+    JwPaginationComponent
   ],
   entryComponents: [
     GoogleBookComponent
@@ -47,8 +48,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     GoogleBookComponent,
     MapsComponent,
     NotificationsComponent,
-    UpgradeComponent,
-    JwPaginationComponent
+    UpgradeComponent
   ]
 })
 
